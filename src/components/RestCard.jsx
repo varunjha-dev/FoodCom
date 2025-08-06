@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 export default function RestCard({ restinfo }) {
   return (
-    <div>
+    <Link to= {"/city/delhi/"+restinfo?.info?.id}>
+    <div className='max-w-[280px] mb-3 transform transition hover:scale-95 duration-150'>
       <img className="w-70 h-45 object-cover rounded-xl" 
       src={"https://media-assets.swiggy.com/swiggy/image/upload/"+restinfo?.info?.cloudinaryImageId}
       alt="restinfo.info.name"
       ></img>
-      <div className='w-[95%] mx-auto mt-3 '>
-      <div className='font-bold text-xl'>{restinfo?.info?.name}</div>
+      <div className='w-[95%] mx-auto mt-1.5 '>
+      <div className='font-bold text-xl truncate'>{restinfo?.info?.name}</div>
       <div className='flex items-center gap-2'>
       <svg
         className="w-6 h-6 fill-green-600"
@@ -20,9 +22,14 @@ export default function RestCard({ restinfo }) {
       <span className='text-lg'>{restinfo?.info?.avgRating}</span>
       <span className='text-lg'>{restinfo?.info?.sla?.slaString}</span>
       </div>
+      <div className='text-gray-600 text-xl mt-1 overflow-hidden h-14 truncate'>{restinfo?.info?.cuisines.join(" ")}
+        <br />
+        {restinfo?.info?.locality}
+      </div>
       
       </div>
     </div>
+    </Link>
   );
 }
 
